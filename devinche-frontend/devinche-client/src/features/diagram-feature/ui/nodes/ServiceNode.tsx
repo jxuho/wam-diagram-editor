@@ -1,14 +1,14 @@
-// Data Provider - Cylinder standing upright
 import { Position, Handle, NodeResizer } from "@xyflow/react";
 import type { NodeProps } from "@/types/diagram";
 
-const DataProviderNode = ({ data, selected }: NodeProps) => {
+// Service - Equilateral triangle with rounded corners, pointing upwards
+const ServiceNode = ({ data, selected }: NodeProps) => {
   return (
     <div className="relative w-full h-full">
       <NodeResizer
         color="#ff0071"
         isVisible={selected}
-        minWidth={60}
+        minWidth={80}
         minHeight={80}
       />
       <svg
@@ -18,55 +18,28 @@ const DataProviderNode = ({ data, selected }: NodeProps) => {
         preserveAspectRatio="none"
         className="absolute inset-0"
       >
-        {/* Cylinder body */}
-        <ellipse
-          cx="50"
-          cy="20"
-          rx="35"
-          ry="8"
+        {/* Equilateral triangle pointing up with rounded corners effect */}
+        <path
+          d="M 50,8 Q 50,5 52,5 L 88,5 Q 92,5 92,8 L 92,85 Q 92,88 90,88 L 10,88 Q 8,88 8,85 L 8,8 Q 8,5 10,5 L 48,5 Q 50,5 50,8 Z"
           fill="white"
           stroke="black"
           strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
-        <rect
-          x="15"
-          y="20"
-          width="70"
-          height="70"
+        {/* Simplified triangle path */}
+        <path
+          d="M 50,10 L 90,85 L 10,85 Z"
           fill="white"
           stroke="black"
           strokeWidth="2"
-        />
-        <ellipse
-          cx="50"
-          cy="90"
-          rx="35"
-          ry="8"
-          fill="white"
-          stroke="black"
-          strokeWidth="2"
-        />
-        {/* Vertical lines for cylinder effect */}
-        <line
-          x1="15"
-          y1="20"
-          x2="15"
-          y2="90"
-          stroke="black"
-          strokeWidth="2"
-        />
-        <line
-          x1="85"
-          y1="20"
-          x2="85"
-          y2="90"
-          stroke="black"
-          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
-      <div className="absolute inset-0 flex items-center justify-center p-2">
+      <div className="absolute inset-0 flex items-center justify-center p-2" style={{ marginTop: '20%' }}>
         <div className="text-xs text-center font-medium">
-          {data.label || "Data Provider"}
+          {data.label || "Service"}
         </div>
       </div>
       <Handle type="source" position={Position.Top} id="top-source" />
@@ -81,5 +54,5 @@ const DataProviderNode = ({ data, selected }: NodeProps) => {
   );
 };
 
-export default DataProviderNode;
+export default ServiceNode;
 

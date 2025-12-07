@@ -1,14 +1,15 @@
-// Data Provider - Cylinder standing upright
 import { Position, Handle, NodeResizer } from "@xyflow/react";
 import type { NodeProps } from "@/types/diagram";
 
-const DataProviderNode = ({ data, selected }: NodeProps) => {
+// Identity Provider - Right-angled triangle with rounded corners
+// Right side is vertical, bottom side is horizontal, hypotenuse slopes from top-left to bottom-right
+const IdentityProviderNode = ({ data, selected }: NodeProps) => {
   return (
     <div className="relative w-full h-full">
       <NodeResizer
         color="#ff0071"
         isVisible={selected}
-        minWidth={60}
+        minWidth={80}
         minHeight={80}
       />
       <svg
@@ -18,55 +19,19 @@ const DataProviderNode = ({ data, selected }: NodeProps) => {
         preserveAspectRatio="none"
         className="absolute inset-0"
       >
-        {/* Cylinder body */}
-        <ellipse
-          cx="50"
-          cy="20"
-          rx="35"
-          ry="8"
+        {/* Right-angled triangle: vertical right side, horizontal bottom, hypotenuse from top-left to bottom-right */}
+        <path
+          d="M 10,10 L 10,90 L 90,90 Z"
           fill="white"
           stroke="black"
           strokeWidth="2"
-        />
-        <rect
-          x="15"
-          y="20"
-          width="70"
-          height="70"
-          fill="white"
-          stroke="black"
-          strokeWidth="2"
-        />
-        <ellipse
-          cx="50"
-          cy="90"
-          rx="35"
-          ry="8"
-          fill="white"
-          stroke="black"
-          strokeWidth="2"
-        />
-        {/* Vertical lines for cylinder effect */}
-        <line
-          x1="15"
-          y1="20"
-          x2="15"
-          y2="90"
-          stroke="black"
-          strokeWidth="2"
-        />
-        <line
-          x1="85"
-          y1="20"
-          x2="85"
-          y2="90"
-          stroke="black"
-          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
-      <div className="absolute inset-0 flex items-center justify-center p-2">
+      <div className="absolute inset-0 flex items-center justify-center p-2" style={{ paddingLeft: '20%', paddingTop: '30%' }}>
         <div className="text-xs text-center font-medium">
-          {data.label || "Data Provider"}
+          {data.label || "Identity Provider"}
         </div>
       </div>
       <Handle type="source" position={Position.Top} id="top-source" />
@@ -81,5 +46,5 @@ const DataProviderNode = ({ data, selected }: NodeProps) => {
   );
 };
 
-export default DataProviderNode;
+export default IdentityProviderNode;
 

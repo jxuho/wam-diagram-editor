@@ -1,4 +1,4 @@
-import type { Node, Edge, Connection, NodeChange, EdgeChange } from '@xyflow/react';
+import type { Node, Edge, Connection, NodeChange, EdgeChange, Position } from '@xyflow/react';
 
 // Extended node type with our custom data structure
 export interface DiagramNode extends Node {
@@ -39,6 +39,8 @@ export interface UseDiagramReturn {
   onNodeContextMenu: (event: React.MouseEvent, node: Node) => void;
   onEdgeContextMenu: (event: React.MouseEvent, edge: Edge) => void;
   onPaneClick: () => void;
+  onDragOver: (event: React.DragEvent) => void;
+  onDrop: (event: React.DragEvent, screenToFlowPosition: (position: { x: number; y: number }) => { x: number; y: number }) => void;
 }
 
 // Node component props
@@ -60,6 +62,8 @@ export interface EdgeProps {
   targetY: number;
   source: string;
   target: string;
+  sourcePosition?: Position;
+  targetPosition?: Position;
   [key: string]: any;
 }
 

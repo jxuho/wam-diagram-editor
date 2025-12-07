@@ -9,8 +9,19 @@ import {
     type Node,
     type Edge,
 } from "@xyflow/react";
+import { v4 as uuidv4 } from "uuid";
 import { initialNodes, initialEdges } from "./data/initialElements";
 import type { DiagramNode, DiagramEdge, ContextMenuState, UseDiagramReturn } from "@/types/diagram";
+
+// Default sizes for each node type
+const nodeTypeDefaults: Record<string, { width: number; height: number }> = {
+  securityRealm: { width: 170, height: 80 },
+  identityProviderNode: { width: 100, height: 100 },
+  applicationNode: { width: 120, height: 120 },
+  serviceNode: { width: 100, height: 100 },
+  dataProviderNode: { width: 80, height: 120 },
+  processUnitNode: { width: 100, height: 100 },
+};
 
 export const useDiagram = (): UseDiagramReturn => {
     const [nodes, setNodes] = useState<DiagramNode[]>(initialNodes);
@@ -80,6 +91,43 @@ export const useDiagram = (): UseDiagramReturn => {
         setMenu(null);
     }, []);
 
+    // Handle drag and drop from palette
+    const onDragOver = useCallback((event: React.DragEvent) => {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = "move";
+    }, []);
+
+    const onDrop = useCallback(
+        (event: React.DragEvent, screenToFlowPosition: (position: { x: number; y: number }) => { x: number; y: number }) => {
+            event.preventDefault();
+
+            const nodeType = event.dataTransfer.getData("application/reactflow");
+            if (!nodeType) return;
+
+            // Convert screen coordinates to flow coordinates
+            const position = screenToFlowPosition({
+                x: event.clientX,
+                y: event.clientY,
+            });
+
+            const defaults = nodeTypeDefaults[nodeType] || { width: 100, height: 100 };
+
+            const newNode: DiagramNode = {
+                id: uuidv4(),
+                type: nodeType,
+                position,
+                data: { label: null },
+                style: {
+                    width: defaults.width,
+                    height: defaults.height,
+                },
+            };
+
+            setNodes((nds) => [...nds, newNode]);
+        },
+        []
+    );
+
     return {
         nodes,
         edges,
@@ -91,6 +139,8 @@ export const useDiagram = (): UseDiagramReturn => {
         onNodeContextMenu,
         onEdgeContextMenu,
         onPaneClick,
+        onDragOver,
+        onDrop,
     };
 };
 

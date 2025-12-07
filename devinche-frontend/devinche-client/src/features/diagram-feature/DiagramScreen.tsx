@@ -8,7 +8,12 @@ import DataProviderNode from "./ui/nodes/DataProviderNode";
 import ApplicationNode from "./ui/nodes/ApplicationNode";
 import ResizableNode from "./ui/nodes/ResizableNode";
 import SecurityRealm from "./ui/nodes/SecurityRealm";
+import IdentityProviderNode from "./ui/nodes/IdentityProviderNode";
+import ServiceNode from "./ui/nodes/ServiceNode";
 import StepEdge from "./ui/edges/StepEdge";
+import InvocationEdge from "./ui/edges/InvocationEdge";
+import LegacyEdge from "./ui/edges/LegacyEdge";
+import TrustEdge from "./ui/edges/TrustEdge";
 import type { NodeTypes, EdgeTypes } from '@xyflow/react';
 
 const nodeTypes: NodeTypes = {
@@ -16,11 +21,16 @@ const nodeTypes: NodeTypes = {
     dataProviderNode: DataProviderNode,
     applicationNode: ApplicationNode,
     resizableNode: ResizableNode,
-    securityRealm: SecurityRealm
+    securityRealm: SecurityRealm,
+    identityProviderNode: IdentityProviderNode,
+    serviceNode: ServiceNode,
 };
 
 const edgeTypes: EdgeTypes = {
-    step: StepEdge, 
+    step: StepEdge,
+    invocation: InvocationEdge,
+    legacy: LegacyEdge,
+    trust: TrustEdge,
 };
 
 const DiagramScreen = () => {
@@ -35,6 +45,8 @@ const DiagramScreen = () => {
         onNodeContextMenu,
         onEdgeContextMenu,
         onPaneClick,
+        onDragOver,
+        onDrop,
     } = useDiagram();
 
     return (
@@ -51,6 +63,8 @@ const DiagramScreen = () => {
                 onNodeContextMenu={onNodeContextMenu}
                 onEdgeContextMenu={onEdgeContextMenu}
                 onPaneClick={onPaneClick}
+                onDragOver={onDragOver}
+                onDrop={onDrop}
                 menu={menu}
             />
         </ReactFlowProvider>
