@@ -6,7 +6,6 @@ import DiagramCanvas from './ui/DiagramCanvas';
 import { ProcessUnitNode } from "./ui/nodes/ProcessUnitNode";
 import DataProviderNode from "./ui/nodes/DataProviderNode";
 import ApplicationNode from "./ui/nodes/ApplicationNode";
-import ResizableNode from "./ui/nodes/ResizableNode";
 import SecurityRealmNode from "./ui/nodes/SecurityRealmNode";
 import ServiceNode from "./ui/nodes/ServiceNode";
 import IdentityProviderNode from "./ui/nodes/IdentityProviderNode";
@@ -25,7 +24,6 @@ const nodeTypes: NodeTypes = {
     processUnitNode: ProcessUnitNode,
     dataProviderNode: DataProviderNode,
     applicationNode: ApplicationNode,
-    resizableNode: ResizableNode,
     securityRealmNode: SecurityRealmNode,
     serviceNode: ServiceNode,
     identityProviderNode: IdentityProviderNode,
