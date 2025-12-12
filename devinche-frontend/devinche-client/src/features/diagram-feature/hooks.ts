@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import {
     applyNodeChanges,
     applyEdgeChanges,
@@ -19,6 +19,8 @@ import { initialNodes, initialEdges } from "./data/initialElements";
 import type { DiagramNode, DiagramEdge, ContextMenuState, UseDiagramReturn } from "@/types/diagram";
 import { exportDiagramToRdfTurtle } from "./ui/exports/exportToRdf";
 
+const STORAGE_KEY = 'diagram.flow';
+
 export const useDiagram = (): UseDiagramReturn => {
     const [nodes, setNodes] = useState<DiagramNode[]>(initialNodes);
     const [edges, setEdges] = useState<DiagramEdge[]>(initialEdges);
@@ -27,12 +29,59 @@ export const useDiagram = (): UseDiagramReturn => {
     const [selectedEdgeType, setSelectedEdgeType] = useState<string>('step');
     const flowWrapperRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
 
+    const loadSaved = useCallback((): ReactFlowJsonObject<DiagramNode, DiagramEdge> | null => {
+        if (typeof window === 'undefined') return null;
+        try {
+            const raw = window.localStorage.getItem(STORAGE_KEY);
+            if (!raw) return null;
+            const parsed = JSON.parse(raw) as ReactFlowJsonObject<DiagramNode, DiagramEdge>;
+            return parsed;
+        } catch (e) {
+            console.warn('Failed to parse saved diagram from storage', e);
+            return null;
+        }
+    }, []);
+
+    const saveToStorage = useCallback(() => {
+        if (typeof window === 'undefined') return;
+        try {
+            if (rfInstance) {
+                const obj = rfInstance.toObject();
+                window.localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
+            } else {
+                // Fallback: save minimal state if instance not ready
+                const minimal = { nodes, edges } as Partial<ReactFlowJsonObject<DiagramNode, DiagramEdge>>;
+                window.localStorage.setItem(STORAGE_KEY, JSON.stringify(minimal));
+            }
+        } catch (e) {
+            console.warn('Failed to save diagram to storage', e);
+        }
+    }, [rfInstance, nodes, edges]);
+
+    // On mount: try to load saved nodes/edges and later apply viewport when instance is set
+    useEffect(() => {
+        const saved = loadSaved();
+        if (saved) {
+            if (saved.nodes) setNodes(saved.nodes as DiagramNode[]);
+            if (saved.edges) setEdges(saved.edges as DiagramEdge[]);
+        }
+        // else keep initialNodes/initialEdges
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     // reactflow initial state handler
     const onFlowInit = useCallback(
-        (instance: ReactFlowInstance<DiagramNode, DiagramEdge>) => { 
-        setRfInstance(instance);
+        (instance: ReactFlowInstance<DiagramNode, DiagramEdge>) => {
+            setRfInstance(instance);
+            // apply saved viewport if any
+            const saved = loadSaved();
+            const vp = saved?.viewport;
+            if (vp) {
+                const { x = 0, y = 0, zoom = 1 } = vp;
+                instance.setViewport({ x, y, zoom });
+            }
         },
-        []
+        [loadSaved]
     );
 
     // JSON export handler
@@ -97,6 +146,17 @@ export const useDiagram = (): UseDiagramReturn => {
         setEdges((eds) => addEdge(newEdge, eds) as DiagramEdge[]);
     }, [selectedEdgeType]);
 
+    // Persist when nodes/edges change
+    useEffect(() => {
+        saveToStorage();
+    }, [nodes, edges, saveToStorage]);
+
+    // Persist viewport on move end
+    const onMoveEnd = useCallback((event: any, viewport: Viewport) => {
+        // viewport is included in rfInstance.toObject()
+        saveToStorage();
+    }, [saveToStorage]);
+
     // Node context menu handler
     const onNodeContextMenu = useCallback(
         (event: React.MouseEvent, node: Node) => {
@@ -132,7 +192,7 @@ export const useDiagram = (): UseDiagramReturn => {
 
     // Canvas context menu handler
    const onPaneContextMenu = useCallback((event: MouseEvent | React.MouseEvent<Element, MouseEvent>) => {
-        event.preventDefault(); 
+        event.preventDefault();
 
         if (!flowWrapperRef.current) return;
         const pane = flowWrapperRef.current.getBoundingClientRect();
@@ -142,7 +202,7 @@ export const useDiagram = (): UseDiagramReturn => {
         const right = event.clientX >= pane.width - 200 ? pane.width - event.clientX : undefined;
         const bottom = event.clientY >= pane.height - 200 ? pane.height - event.clientY : undefined;
 
-        setMenu({ id: 'pane-menu', type: 'canvas', top, left, right, bottom }); 
+        setMenu({ id: 'pane-menu', type: 'canvas', top, left, right, bottom });
     }, []);
 
     // Canvas reset handler
@@ -153,7 +213,7 @@ export const useDiagram = (): UseDiagramReturn => {
             rfInstance.setViewport({ x: 0, y: 0, zoom: 1 });
         }
     }, [rfInstance]);
-    
+
     // Separate onPaneClick, close menu
     const closeMenu = useCallback(() => {
         setMenu(null);
@@ -194,6 +254,7 @@ export const useDiagram = (): UseDiagramReturn => {
         setNodes,
         selectedEdgeType,
         setSelectedEdgeType,
+        onMoveEnd,
     };
 };
 

@@ -36,6 +36,7 @@ interface DiagramCanvasProps {
   onFlowInit: (instance: ReactFlowInstance<DiagramNode, DiagramEdge>) => void;
   setNodes: React.Dispatch<React.SetStateAction<DiagramNode[]>>;
   selectedEdgeType: string;
+  onMoveEnd: (event: any, viewport: { x: number; y: number; zoom: number }) => void;
 }
 
 interface PaletteItem {
@@ -63,6 +64,7 @@ const DiagramCanvas = ({
   onFlowInit,
   setNodes,
   selectedEdgeType,
+  onMoveEnd,
 }: DiagramCanvasProps) => {
     const reactFlowInstance = useReactFlow();
 
@@ -128,38 +130,39 @@ const DiagramCanvas = ({
         connectionLineStyle={{ stroke: 'var(--editor-accent)', strokeWidth: 2 }}
         snapToGrid={true}
         snapGrid={[20, 20]}
+        onMoveEnd={onMoveEnd}
       >
         {/* Major grid lines - every 100px - more prominent */}
-        <Background 
-          variant={BackgroundVariant.Lines} 
-          gap={100} 
+        <Background
+          variant={BackgroundVariant.Lines}
+          gap={100}
           lineWidth={1.5}
-          style={{ 
+          style={{
             color: 'var(--editor-grid)',
-            opacity: 0.7 
+            opacity: 0.7
           }}
         />
         {/* Minor grid lines - every 20px */}
-        <Background 
-          variant={BackgroundVariant.Lines} 
-          gap={20} 
+        <Background
+          variant={BackgroundVariant.Lines}
+          gap={20}
           lineWidth={0.8}
-          style={{ 
+          style={{
             color: 'var(--editor-grid)',
-            opacity: 0.5 
+            opacity: 0.5
           }}
         />
         {/* Grid dots for better visual reference at intersections */}
-        <Background 
-          variant={BackgroundVariant.Dots} 
-          gap={20} 
-          size={2} 
-          style={{ 
+        <Background
+          variant={BackgroundVariant.Dots}
+          gap={20}
+          size={2}
+          style={{
             color: 'var(--editor-grid)',
-            opacity: 0.6 
+            opacity: 0.6
           }}
         />
-        <Controls 
+        <Controls
           position="bottom-right"
           showInteractive={false}
         />
