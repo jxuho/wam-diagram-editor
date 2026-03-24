@@ -645,3 +645,150 @@ Below is a list of all commits made to our project, structured in the following 
 | 1f30c2c | Ibtisam | 2025-10-27 | hero section and footer with basic project setup |
 
 | 5a5ea09 | Sandra Schaftner | 2025-10-27 | Initial commit |
+
+
+# Juho Lee (855888)
+
+## **1. React Flow Initial Setup**
+
+- **Commit name:** `53e3be0`
+- **Description:**
+    - Set up React Flow environment with canvas, hooks, and initial nodes/edges
+    - Enabled basic drag & drop, selection, edge creation, and rendering
+    - Prepared foundation for future features (ContextMenu, PropertiesPanel, AI nodes, etc.)
+
+## **2. Node Component UI and Enhancements**
+
+**AI Node Integration & Edge Properties**
+
+- **Commit name:** `a35d070`, `def99aa`, `221254c`, `7bfc6d1`, `0782cc9`
+- **Description:**
+    - Implemented `AiApplicationNode` and `AiServiceNode` with custom SVG rendering and property fields
+    - Developed dynamic edge property fields based on type (Legacy, Invocation, Trust)
+    - Enhanced AI node property handling and UI consistency
+    - Fixed placeholder rendering issues in dynamic property fields
+
+**Node UI Enhancements**
+
+- **Commit name:** `16d78c2`, `b9278f3`, `edaa573`, `0413a6b`, `e0190da`, `1de8442`, `e57311b`, `fc5baae`
+- **Description:**
+    - Improved SVG styling and label alignment for SecurityRealmNode and IdentityProviderNode
+    - Added "Click-to-Copy" functionality for Node IDs
+    - Fixed node duplication rendering and resizing constraints for SecurityRealmNode
+    - Refined node visuals including background color and resize ratio handling
+
+**Mobile & Canvas Interactions**
+
+- **Commit name:** `6047261`, `24a1faa`, `ff44660`, `e6a5204`
+- **Description:**
+    - Implemented canvas actions: Clear Canvas, Select All
+    - Applied `ConnectionMode.Loose` for flexible handle connections
+    - Improved event handling and flicker-free rendering
+    - Stabilized connection behavior across node interactions
+
+## **3. Cost Data Management**
+
+**Cost Calculation & Breakdown System**
+
+- **Commit name:** `4a48664`, `38e79c7`, `a5c8d7e`
+- **Description:**
+    - Aggregated total costs from all nodes on the canvas
+    - Implemented Cost Breakdown Accordion to display itemized costs
+    - Added utility to format large numbers (e.g., 1,000,000 → "1M")
+
+**Input Sanitization & Validation**
+
+- **Commit name:** `4a48664`, `84d53f0`
+- **Description:**
+    - Regex-based cleaning to strip commas and non-numeric characters from cost inputs
+
+**Node Initialization & Default Costs**
+
+- **Commit name:** `494da63`
+- **Description:**
+    - Centralized default node costs in `nodeCosts.ts`
+    - Applied default costs during `onDrop` event when creating new nodes
+
+## **4. Diagram Page Mobile Responsiveness & Advanced UI Interactions**
+
+**Advanced Context Menu with Floating UI**
+
+- **Commit name:** `f716af2`, `5cf7594`, `6047261`, `24a1faa`, `1a6c5cb`, `5eb5c58`, `f8a50d8`, `bcc8380`
+- **Description:**
+    - Integrated `@floating-ui/react` to solve context menu positioning issues on the canvas
+    - Implemented custom Bottom Sheet interface for mobile users
+    - Added actions: Duplicate Node, Delete Node/Edge, Select All
+    - Styled context menu actions with Tailwind CSS (destructive actions highlighted)
+    - Resolved multiple TypeScript errors and runtime warnings related to ContextMenu
+    - Improved stability of menu open/close behavior across environments
+
+**Responsive Toolbar & Palette**
+
+- **Commit name:** `4d7653e`, `ced743a`, `7d7d7f1`, `dda95cb`, `6b31d1b`
+- **Description:**
+    - Created `ScrollableMenuBar` for overflow handling on small screens (touch-swipe and mouse-drag)
+    - Added "Click-to-Add" functionality to Palette for touch devices
+    - Improved mobile UX and auto-collapse for narrow screens
+    - Enhanced collaboration status responsiveness and toolbar layout behavior
+
+**Z-Index & Rendering Optimization**
+
+- **Commit name:** `ebf580a`, `f577871`
+- **Description:**
+    - Resolved layout conflicts between Chatbot overlay and PropertiesPanel via z-index adjustments and React rendering order
+    - Fixed theme hydration mismatches between light and dark mode
+
+## **5. Editor Page Architecture Refactoring**
+
+**Modularization of useDiagram Hook**
+
+- **Commit name:** `c65e313`, `e6a5204`, `e38a7b5`
+- **Description:**
+    - Split the monolithic `hooks.ts` into multiple specialized hooks: `useDiagramState`, `useDiagramDnD`, `useDiagramMenu`, `useDiagramHistory`, `useDiagramPersistence`
+    - Improved code readability, maintainability, and testability
+
+**PropertiesPanel Modularization**
+
+- **Commit name:** `83e1c85`
+- **Description:**
+    - Refactored `PropertiesPanel.tsx` into smaller reusable functional components and constants
+    - Reduced file complexity and simplified future UI updates
+
+**Export Logic Decoupling**
+
+- **Commit name:** `c65e313`
+- **Description:**
+    - Extracted JSON export logic from React hook into a pure utility function to follow "Rules of Hooks"
+    - Enabled cleaner data processing for diagram export
+
+## **6. Additional Editor Page Performance Tuning & Refinement**
+
+### **Performance & Stability Optimization**
+
+- **Frame Drop Elimination**
+    - **Commit name:** `6f85b6f`
+    - **Description:** Optimized state update cycles during React Flow interactions to eliminate frame drops, ensuring a smooth 60fps experience even when dragging complex nodes.
+- **State Synchronization & Bug Fixes**
+    - **Commit name:** `0413a6b`, `e57311b`
+    - **Description:** Resolved a critical bug where duplicated nodes did not render immediately due to state sync lags; refined SVG intersection logic for improved visual layering on the canvas.
+- **Runtime Stability Enhancement**
+    - **Commit name:** `da7dee4`
+    - **Description:** Applied optional chaining and defensive programming to node measurement logic in the ContextMenu to prevent runtime exceptions and improve system reliability.
+
+### **Advanced Feature Implementation**
+
+- **Type-Specific Attributes & Expandable UI**
+    - **Commit name:** `400f03c`, `bb9ec0e`
+    - **Description:** Implemented specialized attribute fields for varied node types; developed an expandable accordion UI for cost breakdowns to manage data-dense panels efficiently.
+- **Currency & Business Logic Alignment**
+    - **Commit name:** `5234a55`
+    - **Description:** Standardized all currency icons and numeric symbols to Euro (€) to align with the project's specific business requirements and regional standards.
+
+### **Editor Page UI/UX & Accessibility Polish**
+
+- **Visual Hierarchy & Readability**
+    - **Commit name:** `67f5fbf`, `49e1809`, `befa0a0`, `e0190da`, `1de8442`
+    - **Description:** Conducted fine-grained UI adjustments, including scaling text for cost visibility, refining button hover behaviors, and optimizing the layout of labels in `SecurityRealmNode` and `IdentityProviderNode`.
+- **User Access Improvement**
+    - **Commit name:** `7b5191a`
+    - **Description:** Enhanced accessibility by allowing unauthenticated access to the UserAvatarMenu, streamlining the onboarding experience for guest users.
