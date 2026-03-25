@@ -251,6 +251,293 @@
     - Added **company culture section** (vision, mission, values) plus technology stack documentation
 
 
+
+# Ibtisam Contributions(858863)
+
+---
+
+## Ibtisam: feat/frontend-scream-architecture  
+**Commits:**  
+`e24e6c8b`, `363496da`, `4020c5e5`
+
+### Description
+In this phase, Ibtisam established the foundational frontend architecture using a modular and scalable design approach inspired by Scream Architecture. The goal was to organize the project around features rather than technical layers, ensuring long-term maintainability and team scalability.
+
+The application was structured into clearly separated feature modules (e.g., `auth-feature`, `diagram-feature`), each containing its own API layer, hooks, UI components, and state logic. This reduced cross-dependencies and made the codebase easier to extend and debug.
+
+Reusable hooks and utility functions were introduced to standardize API communication and state handling. Initial routing and layout ensured a consistent application structure.
+
+### Impact
+- Scalable frontend foundation  
+- Improved developer experience  
+- Enabled parallel team development  
+
+---
+
+## Ibtisam: convert project to TypeScript  
+**Commit:**  
+`583c41cb`
+
+### Description
+This contribution migrated the entire frontend codebase from JavaScript to TypeScript. All components, hooks, and utilities were updated to `.ts` and `.tsx` files with proper type definitions.
+
+Custom types were introduced for diagram nodes, edges, and application state. Type inconsistencies were resolved, and loosely typed logic was refactored.
+
+### Impact
+- Improved type safety  
+- Reduced runtime errors  
+- Better IDE support  
+
+---
+
+## Ibtisam: frontend/nodes  
+**Commit:**  
+`eb348bb6`
+
+### Description
+Implemented and enhanced UI components for diagram nodes in the WAM Editor. SVG-based nodes were designed for flexibility and scalability.
+
+Features included:
+- Resizable nodes  
+- Connection handles  
+- Standardized layouts  
+
+### Impact
+- Improved usability  
+- Visual consistency  
+- Extensible node system  
+
+---
+
+## Ibtisam: edges shapes  
+**Commit:**  
+`de8b1a2f`
+
+### Description
+Introduced custom edge components such as:
+- Invocation edges  
+- Legacy edges  
+- Trust edges  
+
+Each edge type was visually distinct and aligned with WAM requirements.
+
+### Impact
+- Semantic relationships between nodes  
+- Better visualization  
+- Alignment with modeling standards  
+
+---
+
+## Ibtisam: dark UI (theme system)  
+**Commits:**  
+`c7801a9d`, `e09b5013`
+
+### Description
+Implemented a full theming system with dark and light modes using `ThemeContext`. All components were updated to support dynamic theming.
+
+### Impact
+- Improved accessibility  
+- Better user experience  
+- Consistent UI design  
+
+---
+
+## Ibtisam: feat/realm grouping  
+**Commit:**  
+`a31008dd`
+
+### Description
+Added hierarchical grouping of nodes into "realms" with parent-child relationships. Updated rendering and edge behavior accordingly.
+
+### Impact
+- Logical grouping of elements  
+- Improved readability  
+- Enhanced diagram structure  
+
+---
+
+## Ibtisam: properties panel (initial)  
+**Commit:**  
+`fd1c352d`
+
+### Description
+Introduced a Properties Panel to dynamically view and edit node attributes. Integrated with diagram state.
+
+### Impact
+- Dynamic configuration  
+- Better control over elements  
+- Foundation for advanced editing  
+
+---
+
+## Ibtisam: node naming via properties  
+**Commit:**  
+`b0916fa2`
+
+### Description
+Linked node display with properties panel, enabling dynamic naming of nodes.
+
+### Impact
+- Clear node identification  
+- Data and UI synchronization  
+- Improved UX  
+
+---
+
+## Ibtisam: protected routes & AI chat UI  
+
+### Description
+Implemented authentication-based routing to restrict access to protected pages. Added AI chat UI for interactive assistance and diagram-related tasks.
+
+### Impact
+- Improved security  
+- AI-assisted interaction  
+- Better UI organization  
+
+---
+
+## Ibtisam: user diagrams (frontend)  
+**Commit:**  
+`1eb2b194`
+
+### Description
+Enabled users to create, save, and view diagrams. Added preview system and routing for individual diagrams.
+
+### Impact
+- Persistent workflows  
+- Improved usability  
+- Core feature implementation  
+
+---
+
+## Ibtisam: user diagrams (backend)  
+**Commit:**  
+`18f7603a`
+
+### Description
+Developed backend APIs and database models for storing and retrieving diagrams, including controllers and routes.
+
+### Impact
+- Data persistence  
+- Backend support for frontend  
+- Scalable storage system  
+
+---
+
+## Ibtisam: AI Logic Integration  
+**Commit:**  
+`dc332989`
+
+### Description
+Integrated AI capabilities including diagram generation, validation, and chat interaction. Implemented backend controllers and connected frontend components.
+
+### Impact
+- AI-powered features  
+- Automated validation  
+- Enhanced system innovation  
+
+---
+
+## Ibtisam: collaboration features  
+**Commit:**  
+`61ab02dd`
+
+### Description
+Implemented collaboration tools to support shared diagram workflows. This feature allowed multiple users to interact within the same diagram environment through communication and awareness tools.
+
+Key functionalities included:
+- Commenting system for discussions on diagram elements  
+- Notification system to alert users about updates and interactions  
+- User tagging to mention collaborators  
+- Visual markers for comments within the diagram  
+
+### Files Included
+- `backend/api/controllers/commentController.ts`  
+- `backend/api/controllers/notificationController.ts`  
+- `backend/models/Comment.ts`  
+- `backend/models/Notification.ts`  
+- `src/features/diagram-feature/ui/comments/CommentsPanel.tsx`  
+- `src/features/diagram-feature/ui/comments/CommentMarkers.tsx`  
+- `src/features/diagram-feature/ui/notifications/NotificationBell.tsx`  
+
+### Impact
+- Enabled team collaboration  
+- Improved communication within diagrams  
+- Increased productivity in shared environments  
+
+---
+
+## Ibtisam: real-time collaboration  
+**Commit:**  
+`61ab02dd`
+
+### Description
+Extended collaboration capabilities by implementing real-time editing functionality. Multiple users can now work on the same diagram simultaneously with live updates.
+
+Key features included:
+- Real-time synchronization using WebSockets  
+- Live cursor tracking to show active collaborators  
+- Immediate reflection of changes across all clients  
+
+### Files Included
+- `backend/collaboration/socket.ts`  
+- `src/features/diagram-feature/collaboration/useCollaboration.ts`  
+- `src/features/diagram-feature/ui/CollaborationCursors.tsx`  
+- `src/features/diagram-feature/DiagramScreen.tsx`  
+
+### Impact
+- Enabled concurrent multi-user editing  
+- Improved collaboration efficiency  
+- Provided real-time interaction experience  
+
+---
+
+## Ibtisam: localization support  
+**Commit:**  
+`008767ef`
+
+### Description
+Implemented multi-language support across the application to improve accessibility for users from different regions.
+
+Key features included:
+- Language switcher component  
+- Centralized localization context  
+- Translated UI strings using locale files  
+
+### Files Included
+- `src/components/LanguageSwitcher.tsx`  
+- `src/contexts/LanguageContext.tsx`  
+- `src/locales/*`  
+
+### Impact
+- Improved accessibility for international users  
+- Enhanced user experience  
+- Prepared application for global usage  
+
+---
+
+## Ibtisam: AI chat improvements  
+**Commit:**  
+`8d0fce9e`
+
+### Description
+Enhanced the AI chat interface to improve usability and functionality. Added support for downloading generated reports, making AI outputs more actionable.
+
+Improvements included:
+- Refined chat UI for better interaction  
+- Integration of report generation and download functionality  
+- UI styling updates for improved readability  
+
+### Files Included
+- `src/features/diagram-feature/ui/MonaChatFab.tsx`  
+- `src/app/globals.css`  
+
+### Impact
+- Improved AI interaction experience  
+- Enabled export of AI-generated insights  
+- Increased practical usability of AI features  
+
+---
 # Commits
 
 Below is a list of all commits made to our project, structured in the following format:
