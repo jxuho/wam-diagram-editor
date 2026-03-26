@@ -408,6 +408,66 @@
   - Improved AI chat UI and usability  
   - Added **report generation and download functionality**  
   - Enhanced styling for readability  
+
+
+# Mariia Katsala (838416)
+- Contributed across frontend, backend, and AI components of the system
+- Fully responsible for deployment and infrastructure setup
+- Implemented core AI-driven features and diagram versioning system
+## 1. Full-Stack Deployment & Infrastructure
+
+- **Commit name:** `68fec46`, `1ebd9b4`, `22932a1`, `3fed522`, `54f42d2`, `2297dda`, `dc31b1a`
+- **Description:**
+  - Designed and implemented the complete deployment pipeline for the application
+  - Deployed frontend (Next.js) on Vercel and backend (Express.js) on Render
+  - Configured environment variables, dependencies, and build processes for production
+  - Managed continuous redeployments and ensured system stability across updates
+
+## 2. Backend Development & Database Integration
+
+- **Commit name:** `3c59bfc`, `1fafa2b`, `9e0932d`
+- **Description:**
+  - Implemented MongoDB integration including connection setup, configuration, and initialization scripts
+  - Designed User and Diagram data models and structured database interactions
+  - Developed core backend functionality including authentication (login, registration, logout, update, delete)
+  - Documented backend setup and API usage
+
+## 3. AI Feature Implementation
+
+- **Commit name:** `9a68bd6`, `edcff83`, `3139f93`, `a3c8571`, `90ddc90`
+- **Description:**
+  - Integrated LLM-based features for:
+    - Automatic diagram generation from textual system descriptions
+    - Diagram explanation mode with both technical and non-technical outputs
+    - Documentation generation downloadable as Markdown
+  - Enhanced usability by improving generated node defaults (size, labels, cost values)
+
+## 4. Version Control for Diagrams
+
+- **Commit name:** `ea9a362`
+- **Description:**
+  - Implemented version control system for diagrams, enabling users to track and manage changes
+  - Provided a foundation for future history tracking and rollback functionality
+
+## 5. Frontend Features & UI Improvements
+
+- **Commit name:** `be73847`, `294fd52`, `d9b4c72`, `fb55f36`, `ec41090`
+- **Description:**
+  - Contributed to diagram editor functionality, including node rendering and drag-and-drop behavior
+  - Implemented autosave mechanisms and local storage persistence
+  - Improved export behavior (e.g., PNG export without UI highlights)
+  - Resolved UI inconsistencies and hydration issues
+
+## 6. Additional Features & System Improvements
+
+- **Commit name:** `32a9d50`, `629bb8d`, `5dd65c5`, `64cc598`, `eb691fb`
+- **Description:**
+  - Implemented Undo/Redo functionality for diagram interactions
+  - Fixed cross-browser issues (e.g., favicon in Firefox)
+  - Improved My Diagrams page UI and mobile responsiveness
+  - Applied general bug fixes and usability enhancements across the application
+
+
 # Commits
 
 Below is a list of all commits made to our project, structured in the following format:
