@@ -251,6 +251,163 @@
     - Added **company culture section** (vision, mission, values) plus technology stack documentation
 
 
+
+# Ibtisam Contributions(858863)
+
+## **1. Frontend Architecture (Scream Architecture)**
+
+- **Commit name:** `e24e6c8b`, `363496da`, `4020c5e5`  
+- **Description:**
+  - Designed and implemented a **feature-based frontend architecture** inspired by Scream Architecture  
+  - Structured the application into modular features (`auth-feature`, `diagram-feature`) with isolated API, hooks, UI, and state logic  
+  - Introduced reusable hooks and utilities for standardized API communication  
+  - Established initial routing and layout for consistent app structure  
+
+---
+
+## **2. TypeScript Migration**
+
+- **Commit name:** `583c41cb`  
+- **Description:**
+  - Migrated entire frontend codebase from JavaScript to **TypeScript (.ts/.tsx)**  
+  - Introduced custom types for nodes, edges, and application state  
+  - Refactored loosely typed logic and resolved type inconsistencies  
+
+---
+
+## **3. Node & Edge System Implementation**
+
+### **Node Components**
+
+- **Commit name:** `eb348bb6`  
+- **Description:**
+  - Developed **SVG-based node components** with resizable structure and connection handles  
+  - Standardized node layouts for consistency and scalability  
+
+### **Custom Edge Types**
+
+- **Commit name:** `de8b1a2f`  
+- **Description:**
+  - Implemented distinct edge types:
+    - Invocation  
+    - Legacy  
+    - Trust  
+  - Ensured visual differentiation aligned with WAM modeling standards  
+
+---
+
+## **4. Theme System (Dark/Light Mode)**
+
+- **Commit name:** `c7801a9d`, `e09b5013`  
+- **Description:**
+  - Built dynamic theming system using **ThemeContext**  
+  - Enabled seamless switching between dark and light modes across all components  
+
+---
+
+## **5. Diagram Structure Enhancements**
+
+### **Realm Grouping**
+
+- **Commit name:** `a31008dd`  
+- **Description:**
+  - Introduced hierarchical **parent-child grouping (realms)** for nodes  
+  - Updated rendering logic and edge behavior accordingly  
+
+### **Properties Panel (Core)**
+
+- **Commit name:** `fd1c352d`  
+- **Description:**
+  - Developed dynamic **Properties Panel** for viewing and editing node attributes  
+  - Integrated with diagram state for real-time updates  
+
+### **Dynamic Node Naming**
+
+- **Commit name:** `b0916fa2`  
+- **Description:**
+  - Connected node labels with Properties Panel for **dynamic naming**  
+  - Ensured synchronization between UI and underlying data  
+
+---
+
+## **6. Authentication & AI UI Integration**
+
+- **Commit name:** `d238897`  
+- **Description:**
+  - Implemented **protected routes** for secure page access  
+  - Developed **AI chat interface** for interactive diagram assistance  
+
+---
+
+## **7. Diagram Persistence (Frontend + Backend)**
+
+### **Frontend**
+
+- **Commit name:** `1eb2b194`  
+- **Description:**
+  - Enabled users to create, save, and preview diagrams  
+  - Implemented routing for individual diagram views  
+
+### **Backend**
+
+- **Commit name:** `18f7603a`  
+- **Description:**
+  - Developed APIs and database models for diagram storage  
+  - Implemented controllers and routes for CRUD operations  
+
+---
+
+## **8. AI Integration**
+
+- **Commit name:** `dc332989`  
+- **Description:**
+  - Integrated AI for:
+    - Diagram generation  
+    - Validation  
+    - Chat-based interaction  
+  - Connected frontend UI with backend AI controllers  
+
+---
+
+## **9. Collaboration System**
+
+### **Core Collaboration Features**
+
+- **Commit name:** `61ab02dd`  
+- **Description:**
+  - Implemented collaboration tools:
+    - Commenting system  
+    - Notifications  
+    - User tagging  
+    - Visual comment markers on diagrams  
+
+### **Real-Time Collaboration**
+
+- **Commit name:** `61ab02dd`  
+- **Description:**
+  - Enabled **real-time multi-user editing** using WebSockets  
+  - Implemented live cursor tracking and instant updates across clients  
+
+---
+
+## **10. Localization Support**
+
+- **Commit name:** `008767ef`  
+- **Description:**
+  - Added multi-language support with:
+    - Language switcher  
+    - Centralized localization context  
+    - Translated UI via locale files  
+
+---
+
+## **11. AI Chat Enhancements**
+
+- **Commit name:** `8d0fce9e`  
+- **Description:**
+  - Improved AI chat UI and usability  
+  - Added **report generation and download functionality**  
+  - Enhanced styling for readability  
 # Commits
 
 Below is a list of all commits made to our project, structured in the following format:
