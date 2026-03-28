@@ -251,7 +251,6 @@
     - Added **company culture section** (vision, mission, values) plus technology stack documentation
 
 
-
 # Ibtisam Contributions(858863)
 
 ## **1. Frontend Architecture (Scream Architecture)**
@@ -467,7 +466,81 @@
   - Improved My Diagrams page UI and mobile responsiveness
   - Applied general bug fixes and usability enhancements across the application
 
+# Valeriia Bondareva (860732)
 
+## 1. Palette panel 
+
+- **Commit name:** `ed281f9`, `99b6441`
+- **Description:**
+    - Created initial palette design with node icons
+    - Added drag and drop function of exited nodes and connections to the panel
+    - Iterated on palette layout and visual appearance for comfortable use in the menu
+
+## 2. Node Icons and Edge Styling. Dark theme
+
+- **Commit name:** `24c4470`
+- **Description:**
+    - Added icons for every node type and optimized them for the palette menu
+    - Replaced GitBranch edge icons with ArrowUpIcon for better visual clarity
+
+## 3. Main, Login and Sign-Up Pages
+
+- **Commit name:** `ac9fcf7`, `0c2aa38`
+- **Description:**
+    - Created a design in Figma including branding guidelines, logo, SVG icons and elements, page templates
+    - Implemented main, login and sign-up pages (`page.tsx`, `signup.tsx`, `signin.tsx`)
+    - Combined frontend with backend and configured Google OAuth
+    - Moved editor page to dedicated route and created the main landing page with SVG assets
+
+## 4. Settings Page UX
+
+- **Commit name:** `762b449`, `ba5b980`
+- **Description:**
+    - Built the settings page UX template
+    - Integrated the settings page with the backend API, including user data updates and account deletion
+
+## 5. Forgot Password Feature
+- **Commit name:** `cf3c206`, `8dc5684`, `f82540c`, `3221558`, `56bc66a`
+- **Description:**
+    - Built the page UX template
+    - Created password reset page and added corresponding API route
+    - Merged and synchronized the forgot-password branch with main across multiple iterations
+
+## 6. Subscription Page
+
+- **Commit name:** `93f782f`, `c1e1c66`, `eef5ea3`, `6c3f6bd`
+- **Description:**
+    - Built subscription page template with student and other subscription types
+    - Added button linking to the subscription page from "My Diagrams"
+    - Fixed button color, alignment, and made all pages scrollable
+
+
+## 7. Dark Theme outside the edditor
+
+**Initial Dark Theme Implementation**
+
+- **Commit name:** `ee79b59`, `1ebc07d`, `47d2e62`, `ad97dea`, `d447c85`
+- **Description:**
+    - Implemented dark theme across the application (main, login, sign up, settings, password, subscription pages)
+    - Synchronization with the editor's dark theme
+    - Fixed dark theme background inconsistencies
+    - Fixed dark theme grid and subscription page text rendering
+
+## 8. Mobile Optimization
+
+- **Commit name:** `1e01abc`, `c3e4801`, `f8b0999`, `224c52d`, `534cb2e`, `eef5ea3`
+- **Description:**
+    - Optimized main, settings, login, and sign-up pages for mobile screens
+    - Fixed mobile layout issues across multiple pages
+
+## 9. Editor UI Fixes
+
+- **Commit name:** `e0c869d`, `6cf3103`, `714bbbe`
+- **Description:**
+    - Fixed grid layout in the editor
+    - Applied consistent font usage from the editor across all pages
+    - Made the Devince logo on "My Diagrams" navigate to the main page
+  
 # Commits
 
 Below is a list of all commits made to our project, structured in the following format:
