@@ -85,6 +85,16 @@ devinche/
 
 ---
 
+## Try It Online
+
+**Don't want to set up locally?** You can use the deployed version right now:
+
+**https://wam-studio.de**
+
+The live version has all features enabled (including AI capabilities). Just sign up and start creating diagrams!
+
+---
+
 ## Quick Start
 
 ### Prerequisites
@@ -99,7 +109,7 @@ devinche/
 #### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Ubuntovka/Planspiel26.git
+git clone https://gitlab.hrz.tu-chemnitz.de/vsr/edu/planspiel/ws2526/devinche.git
 cd devinche
 ```
 
