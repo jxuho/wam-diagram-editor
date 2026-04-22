@@ -1,4 +1,4 @@
-# 🎨 Wam Studio
+# 🎨 Wam Studio (Team Project)
 
 > **An AI-powered, browser-based WAM (WebComposition Architecture Model) diagram editor** — built to visualize Web Service Architecture intuitive, fast, and collaborative.
 
@@ -175,4 +175,3 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-<p align="center">Built with ❤️ by a 5-member team · TU Chemnitz Master's Project</p>
