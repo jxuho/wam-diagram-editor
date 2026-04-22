@@ -1,46 +1,178 @@
+# 🎨 Wam Studio
 
-# Wam Studio   
-Wam Studio is an online WAM diagram editor made to simplify and speed up WAM diagram creation.   
-## Setup   
-This project requires the setup of the **fronted** and the **backend**. Third-party services require separate setup.  The app can be used without third party services at the expense of some features like Google OAuth and AI generation and explanation.
+> **An AI-powered, browser-based WAM (WebComposition Architecture Model) diagram editor** — built to visualize Web Service Architecture intuitive, fast, and collaborative.
 
-### Requirements
-- Node.js 18+ 
-- npm, yarn, or pnpm 
-- MongoDB (local or cloud)   
+![Next.js](https://img.shields.io/badge/Next.js-Frontend-000000?style=flat-square&logo=next.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-Typed-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![React Flow](https://img.shields.io/badge/React_Flow-Canvas-ff0072?style=flat-square&logo=react&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?style=flat-square&logo=mongodb&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-Styling-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-API-412991?style=flat-square&logo=openai&logoColor=white)
 
-### Frontend 
-```bash 
-cd devinche-frontend/devinche-client 
-npm install 
-npm run dev` 
+---
+## 🖥️ Preview
+<img width="2559" height="1599" alt="Screenshot 2026-04-22 115737" src="https://github.com/user-attachments/assets/f96d8f17-dac3-4ce8-80f1-06425fbcfa3d" />
+<img width="2559" height="1599" alt="Screenshot 2026-04-22 115728" src="https://github.com/user-attachments/assets/d9b9cdc4-3b16-4243-94c7-3ffff1abbce2" />
+
+
+
+
+---
+
+## 📌 Overview
+
+**Wam Studio** is a full-stack web application developed as a **Team project on Master Web Engineering at TU Chemnitz** (5-member team). It provides a visual, AI-assisted editor for creating and managing WAM (WebComposition Architecture Model) diagrams directly in the browser — reducing the complexity of Web System Architecture Diagramming through an intuitive drag-and-drop interface, real-time AI generation, and collaborative tooling.
+
+🔗 [GitHub Repository](https://github.com/jxuho/Devinche/) &nbsp;|&nbsp; 🌐 [Live Demo](https://www.wam-studio.de/editor/)
+
+
+---
+
+## ✨ Features
+
+- 🖊️ **Visual WAM Diagram Editor** — fully responsive drag-and-drop canvas powered by React Flow
+- 🤖 **AI Generation & Explanation** — OpenAI-powered diagram suggestions via optimized prompting
+- 🔐 **Google OAuth Authentication** — seamless sign-in via Google
+- 💾 **Cloud Persistence** — diagrams saved and synced via MongoDB
+- 📱 **Responsive UI/UX** — consistent experience across screen sizes, built with Tailwind CSS
+- ⚡ **Modular Codebase** — code-split, hook-based architecture for maintainability across the team
+
+---
+
+## 🏗️ Architecture
+
+```
+├── devinche-frontend/
+│   └── devinche-client/     # Next.js + TypeScript frontend (port 3000)
+└── backend/                 # Express.js REST API (port 4000)
 ```
 
-Runs on `http://localhost:3000`
+The frontend and backend are decoupled services that communicate via RESTful API.
 
-### Backend
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+| Tool | Version |
+|------|---------|
+| Node.js | 18+ |
+| Package manager | npm / yarn / pnpm |
+| Database | MongoDB (local or [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)) |
+
+---
+
+### 1. Clone the Repository
 
 ```bash
-cd  ../backend 
-npm install 
+git clone https://github.com/your-org/wam-studio.git
+cd wam-studio
+```
+
+### 2. Frontend Setup
+
+```bash
+cd devinche-frontend/devinche-client
+npm install
 npm run dev
- ```
+```
 
-Runs on `http://localhost:4000`
+Runs at: **http://localhost:3000**
 
-## Environment Variables
+### 3. Backend Setup
 
-Create `.env` files in backend root directory:
+```bash
+cd ../../backend
+npm install
+npm run dev
+```
 
-**.env (Backend)**
+Runs at: **http://localhost:4000**
 
-```text
-NODE_ENV=development 
+---
+
+## 🔧 Environment Variables
+
+Create a `.env` file in the `backend/` directory:
+
+```env
+# Server
+NODE_ENV=development
 PORT=4000
+
+# Database
 MONGODB_URI=your_mongodb_connection_string
+
+# Auth
 JWT_KEY=your_jwt_secret
 GOOGLE_CLIENT_ID=your_google_client_id
 GOOGLE_CLIENT_SECRET=your_google_client_secret
 GOOGLE_REDIRECT_URI=your_google_redirect_uri
+
+# AI
 OPENAI_API_KEY=your_openai_api_key
+GEMINI_API_KEY=your_gemini_api_key
 ```
+
+> **Note:** The app runs without third-party credentials, but Google OAuth and AI features will be disabled.
+
+---
+
+## 🧩 Tech Stack
+
+| Layer | Technologies |
+|-------|-------------|
+| **Frontend** | Next.js, TypeScript, React Flow, Tailwind CSS |
+| **Backend** | Express.js, Node.js |
+| **Database** | MongoDB (Mongoose) |
+| **AI / LLM** | OpenAI API, Google Gemini API |
+| **Auth** | JWT, Google OAuth 2.0 |
+| **Collaboration** | Notion, Lightweight Agile |
+
+---
+
+## 👥 Team Contributions
+ 
+This project was built collaboratively by a **5-member team** at TU Chemnitz.
+ 
+> 👤 **`My Role`** marks areas of personal ownership and primary contribution.
+ 
+---
+ 
+### 🖥️ Front-End Development &nbsp;`My Role`
+ 
+Engineered a fully responsive canvas using React Flow and Next.js, delivering seamless UI/UX and robust RESTful API integration. Refactored legacy code into a modular structure using Code Splitting and Custom Hooks, significantly improving maintainability and scalability for the team.
+ 
+---
+ 
+### 🤖 AI Integration &nbsp;`My Role`
+ 
+Developed the frontend-side API layer connecting the UI to OpenAI and Gemini endpoints. Iteratively crafted and refined System Instructions encoding WebComposition Architecture Model rules through trial and error, improving the accuracy and consistency of AI-generated diagrams.
+ 
+---
+### 📋 Requirements Engineering &nbsp;`My Role`
+ 
+Led customer interviews to extract core requirements, and established a prioritized product backlog to align development goals with stakeholder expectations.
+
+---
+ 
+### 🗂️ Project Management &nbsp;`My Role`
+
+Introduced a Lightweight Agile methodology, managed timelines and team meetings, documented meeting notes, and established a Notion-based collaboration system for the team.
+ 
+---
+ 
+### ⚙️ Backend & Database
+ 
+Handled by other team members. Includes Express.js REST API design, MongoDB schema modeling, and JWT / Google OAuth 2.0 authentication flow.
+ 
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+<p align="center">Built with ❤️ by a 5-member team · TU Chemnitz Master's Project</p>
