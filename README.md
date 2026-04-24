@@ -133,25 +133,37 @@ GEMINI_API_KEY=your_gemini_api_key
 ---
 
 ## 👥 My Contributions
- 
-This project was built collaboratively by a **5-member team** at TU Chemnitz.
 
- 
-### 🖥️ Front-End Development &nbsp;
- 
-Owned the diagram editor page end-to-end — custom node/edge rendering,
-drag-and-drop interactions, and diagram state management with React Flow.
-Refactored legacy code into a modular structure with code splitting and
-custom hooks, improving maintainability across the team.
+This project was built collaboratively by a 5-member team at TU Chemnitz.
 
- 
-### 🤖 AI Frontend Integration &nbsp;
- 
-Built the frontend API layer connecting the UI to OpenAI endpoints. Iteratively refined system prompts encoding WAM diagram rules
-to improve accuracy and consistency of AI-generated output.
- 
+### 🖥️ Front-End Development
+
+Owned the diagram editor page end-to-end. Evaluated diagramming libraries
+and selected React Flow based on its customization capabilities and
+active maintenance. Integrated it from scratch after rapid review of the
+official docs.
+
+Implemented custom node types with SVG-based designs and dynamic edge
+rendering (Legacy, Invocation, Trust). Built per-node Properties Panels
+for metadata input and a cost model system that aggregates total cost
+across all canvas nodes automatically.
+
+Replaced a custom context menu implementation with @floating-ui/react
+after the original overflowed the viewport on edge cases — resolving
+positioning instability across zoom levels and mobile viewports.
+
+Refactored a monolithic useDiagram hook into eight specialized hooks
+(useDiagram, useDiagramState, useDiagramDnD, useDiagramMenu, useDiagramHistory,
+useDiagramPersistence, useDiagramValidation), eliminating frame drops during complex node
+interactions and improving team maintainability.
+
+### 🤖 AI Frontend Integration
+
+Built the frontend API layer connecting the UI to OpenAI and Gemini
+endpoints. Collaboratively tuned system prompts encoding WAM diagram
+rules to improve accuracy and consistency of AI-generated output.
+
 ---
-
 
 ## 📄 License
 
