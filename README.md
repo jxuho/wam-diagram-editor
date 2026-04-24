@@ -132,42 +132,26 @@ GEMINI_API_KEY=your_gemini_api_key
 
 ---
 
-## 👥 Team Contributions
+## 👥 My Contributions
  
 This project was built collaboratively by a **5-member team** at TU Chemnitz.
- 
-> 👤 **`My Role`** marks areas of personal ownership and primary contribution.
- 
----
- 
-### 🖥️ Front-End Development &nbsp;`My Role`
- 
-Engineered a fully responsive canvas using React Flow and Next.js, delivering seamless UI/UX and robust RESTful API integration. Refactored legacy code into a modular structure using Code Splitting and Custom Hooks, significantly improving maintainability and scalability for the team.
- 
----
- 
-### 🤖 AI Integration &nbsp;`My Role`
- 
-Developed the frontend-side API layer connecting the UI to OpenAI and Gemini endpoints. Iteratively crafted and refined System Instructions encoding WebComposition Architecture Model rules through trial and error, improving the accuracy and consistency of AI-generated diagrams.
- 
----
-### 📋 Requirements Engineering &nbsp;`My Role`
- 
-Led customer interviews to extract core requirements, and established a prioritized product backlog to align development goals with stakeholder expectations.
 
----
  
-### 🗂️ Project Management &nbsp;`My Role`
+### 🖥️ Front-End Development &nbsp;
+ 
+Owned the diagram editor page end-to-end — custom node/edge rendering,
+drag-and-drop interactions, and diagram state management with React Flow.
+Refactored legacy code into a modular structure with code splitting and
+custom hooks, improving maintainability across the team.
 
-Introduced a Lightweight Agile methodology, managed timelines and team meetings, documented meeting notes, and established a Notion-based collaboration system for the team.
+ 
+### 🤖 AI Frontend Integration &nbsp;
+ 
+Built the frontend API layer connecting the UI to OpenAI endpoints. Iteratively refined system prompts encoding WAM diagram rules
+to improve accuracy and consistency of AI-generated output.
  
 ---
- 
-### ⚙️ Backend & Database
- 
-Handled by other team members. Includes Express.js REST API design, MongoDB schema modeling, and JWT / Google OAuth 2.0 authentication flow.
- 
----
+
 
 ## 📄 License
 
