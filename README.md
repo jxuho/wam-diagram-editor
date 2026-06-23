@@ -157,6 +157,8 @@ Refactored a monolithic useDiagram hook into eight specialized hooks
 useDiagramPersistence, useDiagramValidation), eliminating frame drops during complex node
 interactions and improving team maintainability.
 
+1,100+ line `useDiagram` hook with 44 returned functions into seven concern-specific hooks, improving maintainability and separation of concerns.
+
 ### 🤖 AI Frontend Integration
 
 Built the frontend API layer connecting the UI to OpenAI and Gemini
